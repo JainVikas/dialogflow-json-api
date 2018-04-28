@@ -49,16 +49,17 @@ def processing(content):
     for key in content:
         print(key, content.get(key))
         
-    url2 = 'https://dl.dropbox.com/s/yio1uc4srkn7jwq/servicekey.json'
+    url2 = content.get('keyurl')
     r2 = requests.get(url2).json()
     f = open("serverkey.json",'w')
     f.write(json.dumps(r2))
     f.close()
     os.environ['GOOGLE_APPLICATION_CREDENTIALS']='serverkey.json'
-    project_id="testapi-tybiwr"
-    session_id=str(uuid.uuid4())
-    language_code="en-US"
-    texts=['testing']
+    project_id=content.get('project_id')
+    session_id=content.get('messenger user id') # for session and context management
+    language_code=content.get('language_code')
+    texts=[content.get('last user freeform input')]
+    print(project_id, session_id, texts, language_code)
     response = detect_intent_texts(project_id, session_id, texts, language_code)
     os.remove('serverkey.json')
     return response
