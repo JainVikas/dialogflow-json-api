@@ -1,0 +1,9 @@
+Flask==0.10.1
+requests
+future==0.16.0
+urllib3==1.21.1
+Werkzeug==0.12.2
+dialogflow
+
+
+https://git.heroku.com/dialogflowconnect.git

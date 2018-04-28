@@ -1,0 +1,9 @@
+create a new agent and enable v2 API. 
+keep a note of project ID = 
+
+create a new service account key, with project-> role-> owner
+
+download the json key.
+
+Set google_application_credentials= 'json'
+
