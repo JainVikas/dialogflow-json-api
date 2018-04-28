@@ -65,7 +65,7 @@ def processing(content):
 
 
 
-@app.route('/connectDialogflow/', methods=['POST'])
+@app.route('/connectDialogflow/', methods=['POST','GET'])
 def connectDialogflow():
     print(request)
     content = request.args
