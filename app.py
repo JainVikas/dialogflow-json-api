@@ -47,7 +47,7 @@ def detect_intent_texts(project_id, session_id, texts, language_code):
 def processing(content):
     print(content)
     for key in content:
-        print(content.get(key))
+        print(key, content.get(key))
         
     url2 = 'https://dl.dropbox.com/s/yio1uc4srkn7jwq/servicekey.json'
     r2 = requests.get(url2).json()
