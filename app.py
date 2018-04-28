@@ -46,7 +46,9 @@ def detect_intent_texts(project_id, session_id, texts, language_code):
 #to extract values from input json and call detect intent function
 def processing(content):
     print(content)
-    #content['url'] 
+    for key in content:
+        print(content.get(key))
+        
     url2 = 'https://dl.dropbox.com/s/yio1uc4srkn7jwq/servicekey.json'
     r2 = requests.get(url2).json()
     f = open("serverkey.json",'w')
