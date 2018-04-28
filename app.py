@@ -66,7 +66,7 @@ def processing(content):
 @app.route('/connectDialogflow/', methods=['POST'])
 def connectDialogflow():
     print(request)
-    content = request.get_json()
+    content = request.args
     response = processing(content)
     print(response)
     return jsonify({"response":"Success"})
