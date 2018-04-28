@@ -52,7 +52,7 @@ def processing(content):
     f = open("serverkey.json",'w')
     f.write(json.dumps(r2))
     f.close()
-    os.environ['GOOGLE_APPLICATION_CREDENTIALS']='server.json'
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS']='serverkey.json'
     project_id="testapi-tybiwr"
     session_id=str(uuid.uuid4())
     language_code="en-US"
