@@ -55,7 +55,7 @@ def processing(content):
     f.write(json.dumps(r2))
     f.close()
     os.environ['GOOGLE_APPLICATION_CREDENTIALS']='serverkey.json'
-    project_id=content.get('project_id')
+    project_id=content.get('project_ID')
     session_id=content.get('messenger user id') # for session and context management
     language_code=content.get('language_code')
     texts=[content.get('last user freeform input')]
@@ -72,7 +72,7 @@ def connectDialogflow():
     content = request.args
     response = processing(content)
     print(response)
-    return jsonify({"response":"Success"})
+    return jsonify({"messages": [{"text": response.query_result.fulfillment_text} ]})
 
 
 
