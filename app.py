@@ -55,18 +55,22 @@ def processing(content):
     session_id=content.get('messenger user id') # for session and context management
     language_code=content.get('language_code')
     texts=[content.get('last user freeform input')]
-    print(project_id, session_id, texts, language_code)
+    #print(project_id, session_id, texts, language_code)
     response = detect_intent_texts(project_id, session_id, texts, language_code)
     os.remove('serverkey.json')
     return response
 
+class Payload(object):
+    def __init__(self, j):
+        self.__dict__ = json.loads(j)
 
 
 @app.route('/connectDialogflow/', methods=['POST','GET'])
 def connectDialogflow():
     content = request.args
     response = processing(content)
-    print(response)
+    print(response.query_result.fulfillment_messages[1])
+    print(Payload(response.query_result.fulfillment_messages[1])
     return jsonify({"messages": [{"text": response.query_result.fulfillment_text} ]})
 
 
