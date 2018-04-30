@@ -10,7 +10,7 @@ import dialogflow
 import requests
 import json
 import uuid
-
+import google.protobuf  as pf
 app = Flask(__name__)
 app.secret_key = 'F12Zr47j\3yX R~X@H!jmM]Lwf/,?KT'
 
@@ -70,7 +70,7 @@ def connectDialogflow():
     content = request.args
     response = processing(content)
     print(response.query_result.fulfillment_messages[1])
-    print(response.query_result.fulfillment_messages[1].payload)
+    print(pf.json_format.MessageToJson(response.query_result.fulfillment_messages[1].payload, including_default_value_fields=False)
     return jsonify({"messages": [{"text": response.query_result.fulfillment_text} ]})
 
 
