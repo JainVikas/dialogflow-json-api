@@ -72,7 +72,7 @@ def connectDialogflow():
     print(response.query_result.fulfillment_messages[1])
     custom_payload = pf.json_format.MessageToJson(response.query_result.fulfillment_messages[1].payload, including_default_value_fields=False)
     print(custom_payload["messages"])
-    return jsonify({"messages": [{"text": response.query_result.fulfillment_text},custom_payload["messages"][0]})
+    return jsonify({"messages": [{"text": response.query_result.fulfillment_text},{"attachment":custom_payload.messages[0].attachment}]})
 
 
 
