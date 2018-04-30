@@ -44,11 +44,7 @@ def detect_intent_texts(project_id, session_id, texts, language_code):
         
 
 #to extract values from input json and call detect intent function
-def processing(content):
-    print(content)
-    for key in content:
-        print(key, content.get(key))
-        
+def processing(content):   
     url2 = content.get('keyurl')
     r2 = requests.get(url2).json()
     f = open("serverkey.json",'w')
@@ -68,7 +64,6 @@ def processing(content):
 
 @app.route('/connectDialogflow/', methods=['POST','GET'])
 def connectDialogflow():
-    print(request)
     content = request.args
     response = processing(content)
     print(response)
