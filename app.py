@@ -68,10 +68,10 @@ class Payload(object):
 @app.route('/connectDialogflow/', methods=['POST','GET'])
 def connectDialogflow():
     content = request.args
-    response = processing(content)
     print(response)
+    response = processing(content)
     print(response.query_result.fulfillment_messages[1])
-    #print(Payload(response.query_result.fulfillment_messages[1])
+    print(Payload(response.query_result.fulfillment_messages[1])
     return jsonify({"messages": [{"text": response.query_result.fulfillment_text} ]})
 
 
